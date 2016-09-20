@@ -1,0 +1,31 @@
+{
+  "name": "@bornkiller/observable",
+  "version": "0.1.0",
+  "description": "Predictable info stream with lite implement.",
+  "main": "dist/observable.bundle.js",
+  "jsnext:main": "dist/observable.bundle.esm.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/bornkiller/observable.git"
+  },
+  "keywords": [
+    "observable",
+    "bornkiller"
+  ],
+  "author": "bornkiller <hjj491229492@hotmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bornkiller/observable/issues"
+  },
+  "homepage": "https://github.com/bornkiller/observable#readme",
+  "devDependencies": {
+    "babel-preset-es2015-rollup": "^1.2.0",
+    "eslint": "^3.5.0",
+    "rollup": "^0.36.0",
+    "rollup-plugin-babel": "^2.6.1",
+    "rollup-watch": "^2.5.0"
+  }
+}
