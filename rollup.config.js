@@ -1,3 +1,7 @@
+/**
+ * @description - observable package rollup configuration
+ * @author - bornkiller <hjj491229492@hotmail.com>
+ */
 import babel from 'rollup-plugin-babel';
 
 export default {
