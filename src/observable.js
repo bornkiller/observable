@@ -4,7 +4,7 @@
  */
 export class Observable {
   constructor() {
-    this.observers = [];
+    this._observers = [];
   }
   
   /**
@@ -12,8 +12,8 @@ export class Observable {
    * @param info
    */
   next(info) {
-    this.observers.forEach((item) => {
-      item.observer.call(this, info);
+    this._observers.forEach(({observer}) => {
+      observer.call(null, info);
     });
   }
   
@@ -25,11 +25,11 @@ export class Observable {
   subscribe(observer) {
     let identity = Symbol('BORNKILLER_OBSERVABLE');
     
-    this.observers.push({identity, observer});
+    this._observers.push({identity, observer});
     
     return {
       unsubscribe: () => {
-        this.observers = this.observers.filter((item) => {
+        this._observers = this._observers.filter((item) => {
           return item.identity !== identity;
         });
       }
