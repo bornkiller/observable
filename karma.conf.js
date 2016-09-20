@@ -1,6 +1,8 @@
 // Karma configuration
 // Generated on Tue Sep 20 2016 18:36:39 GMT+0800 (CST)
 
+const babel = require('rollup-plugin-babel');
+
 module.exports = function(config) {
   config.set({
 
@@ -27,6 +29,13 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      'test/*.spec.js': ['rollup', 'sourcemap']
+    },
+  
+    rollupPreprocessor: {
+      plugins: [babel()],
+      format: 'iife',
+      sourceMap: 'inline'
     },
 
 
@@ -66,4 +75,4 @@ module.exports = function(config) {
     // how many browser should be started simultaneous
     concurrency: Infinity
   })
-}
+};
