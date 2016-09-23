@@ -23,7 +23,7 @@ export class Observable {
    * @return {{unsubscribe: function}}
    */
   subscribe(observer) {
-    let identity = Symbol('BORNKILLER_OBSERVABLE');
+    let identity = Symbol('@@BK_OBSERVABLE');
     
     this._observers.push({identity, observer});
     
