@@ -1,6 +1,6 @@
 {
   "name": "@bornkiller/observable",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Predictable info stream with lite implement.",
   "main": "dist/observable.bundle.js",
   "jsnext:main": "dist/observable.bundle.esm.js",
