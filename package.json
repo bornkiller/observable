@@ -5,7 +5,8 @@
   "main": "dist/observable.bundle.js",
   "jsnext:main": "dist/observable.bundle.esm.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepublish": "rollup -c rollup.config.js",
+    "test": "karma start karma.conf.js --single-run"
   },
   "repository": {
     "type": "git",
