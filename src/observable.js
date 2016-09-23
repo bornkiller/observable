@@ -8,8 +8,17 @@ export class Observable {
   }
   
   /**
+   * @typedef {object} Subscription
+   *
+   * @property {function} unsubscribe
+   *
+   * @description - unique record for the subscribe
+   */
+  
+  /**
    * @description - push info into all the observers
-   * @param info
+   *
+   * @param {any} info - anything pipe into next
    */
   next(info) {
     this._observers.forEach(({observer}) => {
@@ -19,8 +28,10 @@ export class Observable {
   
   /**
    * @description - register observer
+   *
    * @param {function} observer
-   * @return {{unsubscribe: function}}
+   *
+   * @return {Subscription}
    */
   subscribe(observer) {
     let identity = Symbol('@@BK_OBSERVABLE');

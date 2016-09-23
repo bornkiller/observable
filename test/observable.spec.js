@@ -1,7 +1,7 @@
 /**
  * @description - observable test suits
  */
-"use strict";
+'use strict';
 
 import { Observable } from '../src/observable';
 
@@ -44,7 +44,7 @@ describe('@bornkiller/observable package suits', function () {
     
     jasmine.clock().tick(201);
     expect(this.observer.calls.count()).toEqual(1);
-  
+    
     jasmine.clock().tick(601);
     expect(this.observer.calls.count()).toEqual(1);
     
