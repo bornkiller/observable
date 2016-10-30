@@ -17,7 +17,7 @@ describe('@bornkiller/observable package suits', function () {
     expect(this.instance.subscribe).toBeDefined();
   });
   
-  it('should receive info from observable after subscribe', function (done) {
+  it('should receive info from observable after subscribe', function () {
     this.instance.subscribe(this.observer);
     
     this.instance.next('hello world 0');
@@ -28,8 +28,6 @@ describe('@bornkiller/observable package suits', function () {
     expect(this.observer.calls.argsFor(0)).toEqual(['hello world 0']);
     expect(this.observer.calls.argsFor(1)).toEqual(['hello world 1']);
     expect(this.observer.calls.argsFor(2)).toEqual(['hello world 2']);
-    
-    done();
   });
   
   it('should not receive info from observable after unsubscribe', function (done) {
@@ -44,7 +42,8 @@ describe('@bornkiller/observable package suits', function () {
     
     jasmine.clock().tick(201);
     expect(this.observer.calls.count()).toEqual(1);
-    
+    expect(this.observer.calls.argsFor(0)).toEqual(['hello world']);
+  
     jasmine.clock().tick(601);
     expect(this.observer.calls.count()).toEqual(1);
     

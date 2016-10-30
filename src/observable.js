@@ -2,6 +2,9 @@
  * @description - lite observable implement
  * @author - bornkiller <hjj491229492@hotmail.com>
  */
+
+import { identity, wrap } from './assistance';
+
 export class Observable {
   constructor() {
     this._observers = [];
@@ -21,8 +24,8 @@ export class Observable {
    * @param {any} info - anything pipe into next
    */
   next(info) {
-    this._observers.forEach(({observer}) => {
-      observer.call(null, info);
+    this._observers.forEach((observer) => {
+      observer.next(info);
     });
   }
   
@@ -34,14 +37,12 @@ export class Observable {
    * @return {Subscription}
    */
   subscribe(observer) {
-    let identity = Symbol('@@BK_OBSERVABLE');
-    
-    this._observers.push({identity, observer});
+    this._observers.push(wrap(observer));
     
     return {
       unsubscribe: () => {
-        this._observers = this._observers.filter((item) => {
-          return item.identity !== identity;
+        this._observers = this._observers.filter((observer) => {
+          return observer.identity !== identity;
         });
       }
     };
