@@ -1,9 +1,9 @@
 {
   "name": "@bornkiller/observable",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Predictable info stream with lite implement.",
   "main": "dist/observable.bundle.js",
-  "jsnext:main": "dist/observable.bundle.esm.js",
+  "jsnext:main": "index.js",
   "scripts": {
     "prepublish": "rollup -c rollup.config.js",
     "test": "karma start karma.conf.js --single-run"
@@ -30,7 +30,6 @@
     "karma-chrome-launcher": "^2.0.0",
     "karma-coverage": "^1.1.1",
     "karma-jasmine": "^1.0.2",
-    "karma-rollup-plugin": "^0.2.3",
     "karma-sourcemap-loader": "^0.3.7",
     "rollup": "^0.36.0",
     "rollup-plugin-babel": "^2.6.1",
