@@ -41,3 +41,5 @@ jspm_packages
 /dist
 .idea
 .DS_Store
+/test/*.bundle.js
+
