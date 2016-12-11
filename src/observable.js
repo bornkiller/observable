@@ -3,7 +3,7 @@
  * @author - bornkiller <hjj491229492@hotmail.com>
  */
 
-import { identity, wrap } from './assistance';
+import { Observer } from './observer';
 
 export class Observable {
   constructor() {
@@ -11,17 +11,9 @@ export class Observable {
   }
   
   /**
-   * @typedef {object} Subscription
+   * @description - trigger info transfer
    *
-   * @property {function} unsubscribe
-   *
-   * @description - unique record for the subscribe
-   */
-  
-  /**
-   * @description - push info into all the observers
-   *
-   * @param {any} info - anything pipe into next
+   * @param {any} info - anything pipe into observers
    */
   next(info) {
     this._observers.forEach((observer) => {
@@ -30,14 +22,17 @@ export class Observable {
   }
   
   /**
-   * @description - register observer
+   * @description - interface between observer and source
    *
-   * @param {function} observer
+   * @param {function} client
    *
    * @return {Subscription}
    */
-  subscribe(observer) {
-    this._observers.push(wrap(observer));
+  subscribe(client) {
+    let observer = Observer.create(client);
+    let identity = observer.identity;
+    
+    this._observers.push(observer);
     
     return {
       unsubscribe: () => {
@@ -46,5 +41,13 @@ export class Observable {
         });
       }
     };
+  }
+  
+  /**
+   * @description - helper method for instantiate
+   * @return {Observable}
+   */
+  static create() {
+    return new Observable();
   }
 }

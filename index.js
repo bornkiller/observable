@@ -1,4 +1,5 @@
 /**
- * @description - just for rollup fight
+ * @description - just for rollup bundle interface
  */
 export * from './src/observable';
+export * from './src/observer';
