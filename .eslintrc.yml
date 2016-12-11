@@ -2,15 +2,13 @@ env:
   browser: true
   es6: true
   jasmine: true
-  node: true
 extends:
   - 'eslint:recommended'
 parserOptions:
   ecmaVersion: 6
   sourceType: module
-globals:
-  _: true
-# plugins:
+  ecmaFeatures:
+    experimentalObjectRestSpread: true
 rules:
   indent:
     - error
