@@ -19,13 +19,13 @@ export class Observer {
    */
   static create(client) {
     if (isFunction(client)) {
-      return  { identity, client };
+      return { identity, next: client };
     }
-    
+
     if (isObject(client) && isFunction(client.next)) {
-      return { ...client, identity };
+      return Object.assign({}, client, { identity });
     }
-    
+
     throw new Error('@@bk/observable: Observer client should match @type {function} or @type {{next: function}}');
   }
 }
