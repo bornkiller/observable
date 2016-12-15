@@ -1,6 +1,10 @@
 // Karma configuration
 // Generated on Tue Sep 20 2016 18:36:39 GMT+0800 (CST)
-module.exports = function(config) {
+
+const babel = require('rollup-plugin-babel');
+const istanbul = require('rollup-plugin-istanbul');
+
+module.exports = function (config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -14,26 +18,44 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'test/*.spec.bundle.js'
+      'test/*.spec.js'
     ],
 
 
     // list of files to exclude
-    exclude: [
-    ],
+    exclude: [],
 
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'test/*.spec.bundle.js': ['sourcemap']
+      'test/*.spec.js': ['rollup', 'sourcemap']
+    },
+
+    rollupPreprocessor: {
+      plugins: [
+        istanbul({
+          exclude: ['test/*.spec.js']
+        }),
+        babel()
+      ],
+      format: 'iife',
+      sourceMap: 'inline'
     },
 
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['coverage'],
+
+    coverageReporter: {
+      dir: 'coverage',
+      reporters: [
+        { type: 'html', subdir: 'html' },
+        { type: 'lcov', subdir: 'lcov' }
+      ]
+    },
 
 
     // web server port
