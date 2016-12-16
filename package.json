@@ -5,7 +5,8 @@
   "main": "dist/observable.bundle.js",
   "jsnext:main": "index.js",
   "scripts": {
-    "test": "karma start karma.conf.js --single-run"
+    "test": "export NODE_ENV=KARMA_DEV && karma start karma.conf.js",
+    "test-travis": "export NODE_ENV=KARMA_CI && karma start karma.conf.js"
   },
   "repository": {
     "type": "git",

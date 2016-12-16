@@ -4,6 +4,8 @@
 const babel = require('rollup-plugin-babel');
 const istanbul = require('rollup-plugin-istanbul');
 
+const isCIMode = process.env.NODE_ENV === 'KARMA_CI';
+
 module.exports = function (config) {
   config.set({
 
@@ -35,12 +37,7 @@ module.exports = function (config) {
     },
 
     rollupPreprocessor: {
-      plugins: [
-        istanbul({
-          exclude: ['test/*.spec.js']
-        }),
-        babel()
-      ],
+      plugins: isCIMode ? [istanbul({ exclude: ['test/*.spec.js'] }), babel()] : [babel()],
       format: 'iife',
       sourceMap: 'inline',
       moduleName: 'bk.observable'
@@ -50,7 +47,7 @@ module.exports = function (config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['coverage'],
+    reporters: ['progress', 'coverage'],
 
     coverageReporter: {
       dir: 'coverage',
@@ -85,7 +82,7 @@ module.exports = function (config) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false,
+    singleRun: isCIMode,
 
     // Concurrency level
     // how many browser should be started simultaneous
