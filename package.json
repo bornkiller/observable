@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/bornkiller/observable#readme",
   "devDependencies": {
-    "babel-preset-es2015-bk": "^1.3.0",
+    "babel-preset-es2015-bk": "^1.4.0",
     "eslint": "^3.5.0",
     "jasmine-core": "^2.5.2",
     "karma": "^1.3.0",
